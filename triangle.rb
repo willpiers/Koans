@@ -15,6 +15,12 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  [a,b,c].each do |side|
+  	raise TriangleError, "sides must be > 0" if side <= 0
+  end
+	unless (a + b > c) && (b + c > a) && (a + c > b)
+		raise TriangleError, "not a real triangle"
+	end
   return :equilateral if a==b && b==c
   return :isosceles if a==b || b==c || a==c
   return :scalene
