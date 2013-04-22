@@ -33,9 +33,8 @@ def score(dice)
   # You need to write this method
   result = 0
   frequencies = Hash.new(0)
-  dice.each do |one_roll|
-    frequencies[one_roll] += 1
-  end
+  dice.each { |one_roll| frequencies[one_roll] += 1 }
+
   frequencies.each do |die_roll, frequency|
     if frequency >= 3
       result += die_roll == 1 ? 1000 : 100*die_roll
