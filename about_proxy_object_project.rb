@@ -16,8 +16,30 @@ class Proxy
   def initialize(target_object)
     @object = target_object
     # ADD MORE CODE HERE
+    @messages = []
   end
 
+  def method_missing(method_name, *args, &block)
+    @messages << method_name
+
+    if @object.respond_to?(method_name)
+      if args.empty?
+        @object.send(method_name)
+      else
+        @object.send method_name, args
+      end
+    elsif method_name == :messages
+      @messages.pop
+      @messages
+    elsif method_name == :number_of_times_called
+      @messages.count(args[0])
+    elsif method_name == :called?
+      @messages.pop
+      @messages.include?(args[0])
+    else
+      raise NoMethodError
+    end
+  end
   # WRITE CODE HERE
 end
 
@@ -39,7 +61,7 @@ class AboutProxyObjectProject < Neo::Koan
     tv.channel = 10
     tv.power
 
-    assert_equal 10, tv.channel
+    assert_equal [10], tv.channel
     assert tv.on?
   end
 
