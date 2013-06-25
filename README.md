@@ -1,4 +1,5 @@
 [![Stories in Ready](http://badge.waffle.io/willpiers/koans.png)](http://waffle.io/willpiers/koans)  
+[![Stories in Ready](http://badge.waffle.io/willpiers/koans.png)](http://waffle.io/willpiers/koans)  
 = Neo Ruby Koans
 
 The Ruby Koans walk you along the path to enlightenment in order to learn Ruby.
